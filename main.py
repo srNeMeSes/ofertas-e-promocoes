@@ -209,6 +209,17 @@ def main(page: ft.Page):
 
                 requests.post(f'{link}/Credenciais/.json', data=json.dumps(credenciais))
             except:
+                page.snack_bar = ft.SnackBar(
+                    bgcolor=ft.colors.RED_ACCENT_200,
+                    duration=3000,
+                    content=ft.Row([
+                        ft.Text(f'Ops!! Algo deu errado',
+                                weight='bold', color='black', size=20, ),
+
+                        ft.Icon(ft.icons.LINK_OFF, size=30, color='BLACK')  # ft.colors.GREEN_ACCENT_400)
+                    ]))
+                page.snack_bar.open = True
+                page.update()
                 pass
 
 
@@ -544,6 +555,8 @@ def main(page: ft.Page):
 if __name__ == "__main__":
 
     ft.app(target=main, assets_dir="assets", view=ft.WEB_BROWSER)
+
+
 
 
 
